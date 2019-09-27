@@ -77,6 +77,20 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        'private_db' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_PRIVATE_HOST', '127.0.0.1'),
+            'port' => env('DB_PRIVATE_PORT', '5432'),
+            'database' => env('DB_PRIVATE_NAME', 'forge'),
+            'username' => env('DB_PRIVATE_USER', 'forge'),
+            'password' => env('DB_PRIVATE_PASS', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
