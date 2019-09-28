@@ -27,6 +27,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -71,17 +72,14 @@
     </footer>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 @section('js')
-    <script>
-        var socket = io('https://absbal.tk:6001');
-        socket.on('connect', function(){
-            console.log('Загрузили');
-        });
-        socket.on('test_event', function(data){
-            console.log(data);
-        });
-        socket.on('disconnect', function(){});
-    </script>
+{{--    <script>--}}
+{{--        window.Echo.channel('laravel_database_test_event')--}}
+{{--            .listen('Test', function (data) {--}}
+{{--                console.log(data.messsage);--}}
+{{--            });--}}
+{{--    </script>--}}
 @show
 </body>
 </html>

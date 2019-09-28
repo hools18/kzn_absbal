@@ -33,6 +33,7 @@ class CreateMigrationPrivate extends Migration
             $table->integer('serial');
             $table->integer('number');
             $table->bigInteger('client_id');
+            $table->text('reason_reject')->nullable();
             $table->timestamps();
         });
         Schema::connection('private_db')->create('application_decision', function (Blueprint $table) {

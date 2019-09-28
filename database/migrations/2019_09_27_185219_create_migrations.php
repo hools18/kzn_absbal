@@ -56,6 +56,7 @@ class CreateMigrations extends Migration
         Schema::create('operations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('external_id');
+            $table->bigInteger('user_id');
             $table->bigInteger('key_id');
             $table->integer('document_id');
             $table->text('rejection_reason')->nullable();

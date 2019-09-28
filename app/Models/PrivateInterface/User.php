@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $connection = '';
+    protected $connection = 'private_db';
     protected $fillable = [
         'name',
         'surname',
@@ -20,4 +20,9 @@ class User extends Model
         'workplace',
         'unit_number',
     ];
+
+    public function getFullName()
+    {
+        return $this->surname.' '. $this->name.' '. $this->patronymic;
+    }
 }
