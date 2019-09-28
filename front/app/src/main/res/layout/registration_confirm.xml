@@ -47,24 +47,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <com.github.orangegangsters.lollipin.lib.views.PinCodeRoundView
-            android:id="@+id/pin_code_round_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:lp_empty_pin_dot="2"
-            app:lp_full_pin_dot="3" />
+        <include
+            layout="@layout/pin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/orange_button"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Продолжить"
-            android:textColor="#FFFFFF"
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Хотите использовать для подтверждения отпечаток пальца?"
+            android:textAlignment="center"
+            android:textColor="#333333"
             android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/orange_button"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Да"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:background="@drawable/gray_button"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Нет, продолжить"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
