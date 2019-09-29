@@ -15,7 +15,7 @@
         </li>
         <li class="treeview  {{ active('admin.user_interface.*') }}">
             <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Меню регистратора</span>
+                <i class="fa fa-dashboard"></i> <span>Пользовательские данные</span>
                 <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

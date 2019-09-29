@@ -10,7 +10,9 @@ class Operation extends Model
        'external_id',
        'user_id',
        'key_id',
-       'document_id',
+       'contract_id',
        'rejection_reason',
+       'confirmation_time',
+       'crypto_data',
     ];
 }

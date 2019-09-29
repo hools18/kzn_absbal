@@ -2,6 +2,8 @@
 
 namespace App\Models\Crypto;
 
+use App\Models\UserInterface\Key;
+
 class Crypt
 {
     public static function create_keys()
@@ -17,6 +19,21 @@ class Crypt
         ];
 
         return $key;
+    }
+
+    public static function encodeData($private_key_id, $data)
+    {
+        $key = Key::find($private_key_id);
+
+        $privateKey = openssl_pkey_get_private($key->hash_key);
+
+        openssl_private_encrypt($data, $encrypted, $privateKey);
+
+        openssl_free_key($privateKey);
+
+        $encrypted = base64_encode($encrypted);
+
+        return $encrypted;
     }
 
 }

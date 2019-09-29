@@ -58,8 +58,10 @@ class CreateMigrations extends Migration
             $table->bigInteger('external_id');
             $table->bigInteger('user_id');
             $table->bigInteger('key_id');
-            $table->integer('document_id');
+            $table->integer('contract_id');
             $table->text('rejection_reason')->nullable();
+            $table->timestamp('confirmation_time')->nullable();
+            $table->text('crypto_data')->nullable();
             $table->timestamps();
         });
         Schema::create('contracts', function (Blueprint $table) {
