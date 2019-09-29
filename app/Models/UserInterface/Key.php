@@ -17,4 +17,9 @@ class Key extends Model
         'inactive_time',
     ];
 
+    public function public_key()
+    {
+        return $this->hasOne(PublicKey::class);
+    }
+
 }

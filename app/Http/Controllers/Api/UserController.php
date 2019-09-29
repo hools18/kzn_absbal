@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\UserInterface\Document;
 use App\Models\UserInterface\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -33,15 +35,15 @@ class UserController extends Controller
             'device_id' => $request->device_id,
         ]);
 
-        $document = Document::create([
-            'user_id' => $user->id,
-            'series' => $request->series,
-            'number' => $request->number,
-            'issuing_authority' => $request->issuing_authority,
-            'date_of_issue' => $request->date_of_issue,
-            'time_expired' => $request->time_expired,
-            'type' => 'passport',
-        ]);
+//        $document = Document::create([
+//            'user_id' => $user->id,
+//            'series' => $request->series,
+//            'number' => $request->number,
+//            'issuing_authority' => $request->issuing_authority,
+//            'date_of_issue' => $request->date_of_issue,
+//            'time_expired' => $request->time_expired,
+//            'type' => 'passport',
+//        ]);
 
         return response()->json([
             'status' => 1,
@@ -60,7 +62,40 @@ class UserController extends Controller
         $user->save();
 
         return response()->json([
-            ''
+            'status' => 1,
+            'message' => 'Дата успешно обновлена',
         ]);
     }
+
+    public function getPublicKey(Request $request)
+    {
+
+        $user = $request->user();
+
+        $keys = $user->keys;
+        $array = [];
+
+        foreach ($keys as $key) {
+            $array[] = $key->public_key;
+        };
+
+        return $array;
+    }
+
+    public function getUserData($user_id)
+    {
+        $user = User::findOrFail($user_id);
+//        dd($user);
+        return response()->json([
+            'status' => 1,
+            'message' => 'Данные пользователя',
+            'content' => [
+                'fullname' => $user->getFullName(),
+                'phone' => $user->phone,
+                'email' => $user->email,
+                'birthday' => $user->birthday,
+            ]
+        ]);
+    }
+
 }
