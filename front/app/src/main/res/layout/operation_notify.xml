@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/tvDateNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -19,7 +19,7 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/btnConfirmNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

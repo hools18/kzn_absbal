@@ -84,27 +84,24 @@ public class RegistrationConfirmActivity extends AppCompatActivity {
     private void initButtons() {
         RxView.clicks(btnSubmit)
             .subscribe(aVoid -> {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-//                        intent.putExtra("user", wResponse);
-                startActivity(intent);
-//                sendData();
+                sendData();
             });
     }
 
     private void sendData() {
         NetworkService.getInstance()
             .getJSONApi()
-            .getConfirm(String.valueOf(loginResponseVO.getUserId()), date)
+            .getConfirm(date, String.valueOf(loginResponseVO.getUserId()))
             .enqueue(new Callback<Object>() {
                 @Override
                 public void onResponse(Call<Object> call, Response<Object> response) {
                     if (response.body() != null) {
 //                        LoginResponseVO wResponse = response.body();
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
 //                        intent.putExtra("user", wResponse);
-                        startActivity(intent);
-//                        Log.d(this.getClass().getSimpleName(), wResponse.getMessage());
                     }
+
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override

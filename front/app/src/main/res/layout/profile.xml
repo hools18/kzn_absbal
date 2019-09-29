@@ -57,7 +57,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnSignDocument"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:background="@drawable/orange_button"

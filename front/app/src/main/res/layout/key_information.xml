@@ -69,7 +69,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/tvDateOfNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -120,7 +120,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/tvDocumentNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -134,7 +134,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/btnDecline"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:background="@drawable/orange_button"
@@ -142,7 +142,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/btnAccept"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginLeft="25dp"

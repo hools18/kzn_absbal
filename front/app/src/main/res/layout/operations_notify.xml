@@ -62,13 +62,13 @@
 
         <include layout="@layout/operation_notify" />
 
-        <include layout="@layout/operation_notify" />
+<!--        <include layout="@layout/operation_notify" />-->
 
-        <include layout="@layout/operation_notify" />
+<!--        <include layout="@layout/operation_notify" />-->
 
-        <include layout="@layout/operation_notify" />
+<!--        <include layout="@layout/operation_notify" />-->
 
-        <include layout="@layout/operation_notify" />
+<!--        <include layout="@layout/operation_notify" />-->
 
     </LinearLayout>
 

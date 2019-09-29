@@ -1,29 +1,40 @@
 package com.example.fnscrypto;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.R;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.myapplication.R;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.absolutebalance.common.LoginResponseVO;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ru.absolutebalance.common.NetworkService;
+import ru.absolutebalance.common.NoticeVO;
 
 public class ConfirmOperationActivity extends AppCompatActivity {
 
-    @BindView(R.id.spinner_dates)
-    Spinner dates;
+    @BindView(R.id.btnAccept)
+    Button btnAccept;
 
-    LoginResponseVO loginResponseVO;
+    @BindView(R.id.btnDecline)
+    Button btnDecline;
+
+    @BindView(R.id.tvDateOfNotification)
+    TextView date;
+
+    @BindView(R.id.tvDocumentNumber)
+    TextView tvDocument;
+
+    NoticeVO noticeVO;
 
 
     @Override
@@ -35,24 +46,9 @@ public class ConfirmOperationActivity extends AppCompatActivity {
         getUser();
         initButtons();
 
-        addItemsOnSpinner2();
         addListenerOnButton();
-        addListenerOnSpinnerItemSelection();
     }
 
-    // add items into spinner dynamically
-    public void addItemsOnSpinner2() {
-        List<String> list = new ArrayList<String>();
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(),
-            android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dates.setAdapter(dataAdapter);
-    }
-
-    public void addListenerOnSpinnerItemSelection() {
-
-    }
 
     // get the selected dropdown list value
     public void addListenerOnButton() {
@@ -61,10 +57,50 @@ public class ConfirmOperationActivity extends AppCompatActivity {
 
     private void getUser() {
         Intent i = getIntent();
-        loginResponseVO = (LoginResponseVO) i.getParcelableExtra("user");
+        noticeVO = (NoticeVO) i.getParcelableExtra("notifications1");
+        tvDocument.setText(noticeVO.getContractId()+"");
+        date.setText(noticeVO.getDate());
     }
 
     private void initButtons() {
+        RxView.clicks(btnDecline)
+            .subscribe(aVoid -> {
+                NetworkService.getInstance()
+                    .getJSONApi()
+                    .setStatusOperation("", String.valueOf(noticeVO.getOperationId()))
+                    .enqueue(new Callback<Object>() {
+                        @Override
+                        public void onResponse(Call<Object> call, Response<Object> response) {
+                            Toast.makeText(getApplicationContext(), "Операция отменена!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                            startActivity(intent);
+                        }
 
+                        @Override
+                        public void onFailure(Call<Object> call, Throwable t) {
+
+                        }
+                    });
+            });
+
+        RxView.clicks(btnAccept)
+            .subscribe(aVoid -> {
+                NetworkService.getInstance()
+                    .getJSONApi()
+                    .setStatusOperation("Не понял", String.valueOf(noticeVO.getOperationId()))
+                    .enqueue(new Callback<Object>() {
+                        @Override
+                        public void onResponse(Call<Object> call, Response<Object> response) {
+                            Toast.makeText(getApplicationContext(), "Операция утверждена!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onFailure(Call<Object> call, Throwable t) {
+
+                        }
+                    });
+            });
     }
 }
