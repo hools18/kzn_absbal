@@ -2,6 +2,8 @@ package ru.absolutebalance.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Timestamp;
+
 public class UserVO {
     @SerializedName("name")
     private String name;
@@ -13,7 +15,7 @@ public class UserVO {
     private String surname;
 
     @SerializedName("birthday")
-    private Integer datebirth;
+    private Timestamp birthday;
 
     @SerializedName("email")
     private String email;
@@ -31,7 +33,7 @@ public class UserVO {
     private String biometrics;
 
     @SerializedName("confirmation_date")
-    private Integer confirmationDate;
+    private Timestamp confirmationDate;
 
     @SerializedName("device_id")
     private String deviceId;
@@ -46,10 +48,36 @@ public class UserVO {
     private String issumingAuthority;
 
     @SerializedName("date_of_issue")
-    private Integer issuedDate;
+    private Timestamp issuedDate;
 
     @SerializedName("time_expired")
-    private Integer timeExpired;
+    private Timestamp timeExpired;
+
+    public UserVO(String name, String patronymic, String surname, String deviceId) {
+        this.name = name;
+        this.patronymic = patronymic;
+        this.surname = surname;
+        this.deviceId = deviceId;
+    }
+
+    public UserVO(String name, String patronymic, String surname, Timestamp birthday, String email, String login, String password, String phone, String biometrics, Timestamp confirmationDate, String deviceId, Integer series, Integer number, String issumingAuthority, Timestamp issuedDate, Timestamp timeExpired) {
+        this.name = name;
+        this.patronymic = patronymic;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.phone = phone;
+        this.biometrics = biometrics;
+        this.confirmationDate = confirmationDate;
+        this.deviceId = deviceId;
+        this.series = series;
+        this.number = number;
+        this.issumingAuthority = issumingAuthority;
+        this.issuedDate = issuedDate;
+        this.timeExpired = timeExpired;
+    }
 
     public String getName() {
         return name;
@@ -75,12 +103,12 @@ public class UserVO {
         this.surname = surname;
     }
 
-    public Integer getDatebirth() {
-        return datebirth;
+    public Timestamp getBirthday() {
+        return birthday;
     }
 
-    public void setDatebirth(Integer datebirth) {
-        this.datebirth = datebirth;
+    public void setBirthday(Timestamp birthday) {
+        this.birthday = birthday;
     }
 
     public String getEmail() {
@@ -123,11 +151,11 @@ public class UserVO {
         this.biometrics = biometrics;
     }
 
-    public Integer getConfirmationDate() {
+    public Timestamp getConfirmationDate() {
         return confirmationDate;
     }
 
-    public void setConfirmationDate(Integer confirmationDate) {
+    public void setConfirmationDate(Timestamp confirmationDate) {
         this.confirmationDate = confirmationDate;
     }
 
@@ -163,19 +191,20 @@ public class UserVO {
         this.issumingAuthority = issumingAuthority;
     }
 
-    public Integer getIssuedDate() {
+    public Timestamp getIssuedDate() {
         return issuedDate;
     }
 
-    public void setIssuedDate(Integer issuedDate) {
+    public void setIssuedDate(Timestamp issuedDate) {
         this.issuedDate = issuedDate;
     }
 
-    public Integer getTimeExpired() {
+    public Timestamp getTimeExpired() {
         return timeExpired;
     }
 
-    public void setTimeExpired(Integer timeExpired) {
+    public void setTimeExpired(Timestamp timeExpired) {
         this.timeExpired = timeExpired;
     }
 }
+

@@ -10,9 +10,9 @@ public class NetworkService {
 
     private NetworkService() {
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
     }
 
     public static NetworkService getInstance() {
@@ -21,7 +21,8 @@ public class NetworkService {
         return mInstance;
     }
 
-    public APiInterface getJSONApi() {
-        return mRetrofit.create(APiInterface.class);
+    public ApiInterface getJSONApi() {
+        return mRetrofit.create(ApiInterface.class);
     }
+
 }
