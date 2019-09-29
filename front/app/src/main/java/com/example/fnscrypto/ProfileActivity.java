@@ -33,22 +33,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
         ButterKnife.bind(this);
 
+        getData();
         initButtons();
     }
 
-    private void initButtons() {
-        RxView.clicks(btnSign)
-            .subscribe(aVoid -> {
-                Intent intent = new Intent(this, OperationsActivity.class);
-                intent.putExtra("notifications", webBaseResponse.getContent().get(0));
-                startActivity(intent);
-            });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+    private void getData() {
         NetworkService.getInstance()
             .getJSONApi()
             .getNewNotice()
@@ -64,5 +53,21 @@ public class ProfileActivity extends AppCompatActivity {
 
                 }
             });
+    }
+
+
+    private void initButtons() {
+        RxView.clicks(btnSign)
+            .subscribe(aVoid -> {
+                Intent intent = new Intent(this, OperationsActivity.class);
+                intent.putExtra("notifications", webBaseResponse.getContent().get(0));
+                startActivity(intent);
+            });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 }
