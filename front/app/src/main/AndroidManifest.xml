@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.fnscrypto.ProfileActivity"></activity>
+        <activity android:name="com.example.fnscrypto.RegistrationConfirmActivity"></activity>
+        <activity android:name="com.example.fnscrypto.ProfileActivity" />
         <activity android:name="com.example.fnscrypto.ConfirmOperationActivity" />
         <activity android:name="com.example.fnscrypto.ContinueRegistrationActivity" />
         <activity android:name="com.example.fnscrypto.RegistrationActivity" />

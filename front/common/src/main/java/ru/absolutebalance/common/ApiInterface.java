@@ -19,8 +19,21 @@ public interface ApiInterface {
                                   @Field("device_id") String deviceId);
 //    Call<LoginResponseVO> getAuth(@Body String request);
 
+    @FormUrlEncoded
+    @POST("/getNewNotice")
+    Call<LoginResponseVO> getNewNotice(@Field("confirmation_date") String patronymic);
+
+//    "status": 1,
+//        "message": "Есть операции в очереди на подтверждение",
+//        "content": [
+//    {
+//        "operation_id": 1,
+//        "contract_id": 1,
+//        "created_at": "2019-09-29T04:32:34.000000Z"
+//    }
+//    ]
 
     @POST("/update_confirmation_date")
-    Observable<Object> getConfirm(@Body String request);
+    Call<Object> getConfirm(@Field("confirmation_date") String request, @Field("user_id") String userId);
 
 }

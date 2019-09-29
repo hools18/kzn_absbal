@@ -68,7 +68,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponseVO> call, Response<LoginResponseVO> response) {
                     if (response.body() != null) {
                         LoginResponseVO wResponse = response.body();
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        Intent intent = new Intent(getApplicationContext(), RegistrationConfirmActivity.class);
+                        intent.putExtra("user", wResponse);
+                        startActivity(intent);
                         Log.d(this.getClass().getSimpleName(), wResponse.getMessage());
                     }
 
