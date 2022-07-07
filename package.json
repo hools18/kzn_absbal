@@ -28,7 +28,7 @@
         "admin-lte": "^2.4.18",
         "bootstrap-datetimepicker-npm": "^4.17.37-npm",
         "laravel-echo": "^1.6.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "socket.io-client": "^2.3.0"
     }
 }
